@@ -1,12 +1,25 @@
 # 90/20 Timer (macOS-friendly)
 
-A simple terminal timer for 90-minute work sessions followed by 20-minute rest breaks. It plays clear sounds using macOS `afplay` and shows colorful banners when a session ends.
+Choose between a quick terminal timer or a clean desktop app for 90-minute work sessions followed by 20-minute rest breaks. The desktop app provides big visuals, color cues, and optional sounds/notifications so you can launch it straight from Finder.
 
-## Requirements
-- Python 3.10+
-- macOS for sounds/notifications (other platforms fall back to a terminal bell and text banners)
+## Desktop app
+```bash
+python desktop_timer.py
+```
 
-## Usage
+**Controls**
+- Start/Pause and Reset buttons
+- Work, Rest, and Cycle inputs (defaults: 90/20, 1 cycle)
+- Demo toggle (treats values as seconds for quick previews)
+
+**Visual cues**
+- Large countdown clock and progress bar
+- Color changes for work (green), rest (blue), and finished (purple)
+- macOS sounds (`afplay`) and notifications (`osascript`) when available
+
+Tips: On macOS you can save a shortcut that runs `python desktop_timer.py` or create an Automator app to launch it from your dock.
+
+## Terminal timer
 ```bash
 python timer.py
 ```
@@ -36,8 +49,8 @@ python timer.py --work 50 --rest 10 --cycles 2 --no-sound
 
 ## How it alerts you
 - **Sound:** Attempts to play built-in macOS sounds with `afplay`, falling back to a terminal bell when unavailable.
-- **Visuals:** Colorful terminal banners clearly show when a session starts and completes.
+- **Visuals:** Colorful terminal banners or desktop colors clearly show when a session starts and completes.
 - **Notifications:** Uses `osascript` to trigger a native macOS notification when available.
 
 ## Interrupting
-Press `Ctrl+C` at any time to exit the timer early.
+Press `Ctrl+C` at any time to exit the terminal timer early.
